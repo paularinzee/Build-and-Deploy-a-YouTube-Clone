@@ -14,11 +14,11 @@ steps:
 
 - checkout: self
   fetchDepth: 1
-- task: Npm@0
+- task: Npm@10
   displayName: npm install
   inputs:
     verbose: false
-- task: Npm@0
+- task: Npm@10
   displayName: npm build
   inputs:
     command: custom

@@ -6,25 +6,31 @@
 trigger:
 - main
 
-pool:
+pool: Default
   # vmImage: ubuntu-latest
-  Agent name: MRP
+  # Agent name: MRP
 
 steps:
-- checkout: self
-  fetchDepth: 1
-- task: Npm@1
-  displayName: npm install
-  inputs:
-    verbose: false
-- task: Npm@1
-  displayName: npm build
-  inputs:
-    command: custom
-    verbose: false
-    customCommand: run build
-# - task: PublishBuildArtifacts@1
+- script: echo Hello, world!
+  displayName: 'Run a one-line scrip'
+- script: |
+    echo Add other tasksto build, test, and deploy your project
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi line script'
+# - checkout: self
+#   fetchDepth: 1
+# - task: Npm@1
+#   displayName: npm install
 #   inputs:
-#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#     ArtifactName: 'drop'
-#     publishLocation: 'Container'
+#     verbose: false
+# - task: Npm@1
+#   displayName: npm build
+#   inputs:
+#     command: custom
+#     verbose: false
+#     customCommand: run build
+# # - task: PublishBuildArtifacts@1
+# #   inputs:
+# #     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+# #     ArtifactName: 'drop'
+# #     publishLocation: 'Container'

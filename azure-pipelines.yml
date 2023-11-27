@@ -11,24 +11,35 @@ pool: Default
   # Agent name: MRP
 
 steps:
+# Use Node.js ecosystem v0
+# Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH.
+- task: NodeTool@0
+  inputs:
+    versionSource: 'spec' # 'spec' | 'fromFile'. Required. Source of version. Default: spec.
+    #versionSpec: '6.x' # string. Optional. Use when versionSource = spec. Version Spec. Default: 6.x.
+    #versionFilePath: # string. Optional. Use when versionSource = fromFile. Path to the .nvmrc file. 
+    #checkLatest: false # boolean. Check for Latest Version. Default: false.
+    #force32bit: false # boolean. Use 32 bit version on x64 agents. Default: false.
+  # Advanced
+    #nodejsMirror: 'https://nodejs.org/dist' # string. Set source for Node.js binaries. Default: https://nodejs.org/dist.
 # - script: echo Hello, world!
 #   displayName: 'Run a one-line scrip'
 # - script: |
 #     echo Add other tasksto build, test, and deploy your project
 #     echo See https://aka.ms/yaml
 #   displayName: 'Run a multi line script'
-- checkout: self
+# - checkout: self
   fetchDepth: 1
-- task: Npm@1
-  displayName: npm install
-  inputs:
-    verbose: false
-- task: Npm@1
-  displayName: npm build
-  inputs:
-    command: custom
-    verbose: false
-    customCommand: run build
+# - task: Npm@1
+#   displayName: npm install
+#   inputs:
+#     verbose: false
+# - task: Npm@1
+#   displayName: npm build
+#   inputs:
+#     command: custom
+#     verbose: false
+#     customCommand: run build
 # # - task: PublishBuildArtifacts@1
 # #   inputs:
 # #     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
